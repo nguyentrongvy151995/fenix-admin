@@ -8,7 +8,7 @@ exports.getCORSOrigin = () => {
 };
 
 exports.mongoConfig = {
-    connection: process.env.MONGO_CONNECTION || 'mongodb+srv://nguyentrongvy151995:NyxPLPEFcJcu9euo@cluster0.ktwrhyv.mongodb.net/test',
+    connection: process.env.MONGO_CONNECTION || 'mongodb+srv://tranguyenreactjs:123456q@cluster0.gheuhd5.mongodb.net/nodejs?retryWrites=true&w=majority',
     options: {
         useNewUrlParser: true,
         useUnifiedTopology: true,

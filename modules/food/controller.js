@@ -3,7 +3,8 @@ const foodService = require("./service");
 
 class FoodController extends BaseController {
   async create(req, res) {
-    const { title, image, timeIn, description, isComplete } = req.body;
+    console.log(req.body);
+    const { title, image, timeIn, description, isComplete, test } = req.body;
 
     await foodService.create({
       title,
@@ -11,6 +12,7 @@ class FoodController extends BaseController {
       timeIn,
       isComplete,
       description,
+      test
     });
 
     res.success([]);
@@ -18,6 +20,7 @@ class FoodController extends BaseController {
 
   async getFoods(req, res) {
     const { page, limit, timeIn } = req.query;
+    console.log(req.query);
 
     const foods = await foodService.getFoods({ page, limit, timeIn });
 
