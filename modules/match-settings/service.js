@@ -1,7 +1,15 @@
-const rankSettingsRepository = require('./repository');
+const matchSettingRepository = require("./repository");
 
-class RankSettingsService {
+class MatchSettingService {
+  async create() {}
 
+  async findMatchById() {}
+
+  async updateMatchById() {}
+
+  async getListMatch() {}
+
+  async deleteMatchById() {}
 }
 
-module.exports = new RankSettingsService();
+module.exports = new MatchSettingService();

@@ -1,5 +1,5 @@
 exports.serverConfig = {
-    port: process.env.PORT || 4000,
+    port: process.env.PORT || 5000,
 };
 
 exports.getCORSOrigin = () => {

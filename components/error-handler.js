@@ -42,7 +42,8 @@ module.exports = logger => (err, req, res, next) => {
             .json(errInstance);
     }
 
-    logger.error(err, 'unexpected error');
+    //logger.error(err, 'unexpected error');
+    console.log(err);
     res.status(StatusCodes.INTERNAL_SERVER_ERROR)
         .json({
             message: 'unexpected error',
