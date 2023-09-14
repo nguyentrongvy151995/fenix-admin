@@ -24,4 +24,15 @@ module.exports = {
         DINNER: 'dinner',
         SNACK: 'snack',
     },
+    ROUND_TYPE: {
+        WAITING: 'WAITING',
+        PLAY_AROUND: 'PLAY_AROUND',
+        PUZZLE: 'PUZZLE',
+        TRADING: 'TRADING',
+    },
+    PUZZLE_TYPE: {
+        MATCH_CALCULATION: 'MATCH_CALCULATION',
+        PICTURE_PREDICTION: 'PICTURE_PREDICTION',
+        SHEEP_COUNTER: 'SHEEP_COUNTER',
+    },
 };
