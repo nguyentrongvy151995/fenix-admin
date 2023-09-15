@@ -21,11 +21,16 @@ class RankTiersService {
     });
   }
 
-  async getListTiers() {
-    return rankTiersRepository.getMany({
-      limit: 10,
-      page: 1,
-    });
+  async getListTiers(page) {
+    const [numberOfTiers, tiers] = await Promise.all([
+      rankTiersRepository.count(),
+      rankTiersRepository.getMany({
+        page,
+        limit: 10,
+      }),
+    ]);
+
+    return {tiers, numberOfTiers}
   }
 
   async deleteTiersById(id) {

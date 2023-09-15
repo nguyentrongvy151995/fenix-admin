@@ -38,7 +38,8 @@ class RankTiersController extends BaseController {
   }
 
   async getListTiers(req, res) {
-    const result = await rankTiersService.getListTiers();
+    const page = req.query.page || 1;
+    const result = await rankTiersService.getListTiers(page);
 
     res.success(result);
   }
