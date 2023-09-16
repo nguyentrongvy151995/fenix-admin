@@ -79,6 +79,14 @@ class BaseRepository {
             .lean(newOptions.isLean);
     }
 
+    getById(id) {
+        return this.model.findById(id)
+    }
+
+    updatebyId(id, data) {
+        return this.model.findOneAndUpdate(id, data, {returnOriginal: false})
+    }
+
     create(data) {
         if (Array.isArray(data)) {
             return this.model.insertMany(data);

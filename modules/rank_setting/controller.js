@@ -8,9 +8,27 @@ class RankSettingController extends BaseController {
         res.success([]);
     }
 
-    async getRankSetting(req, res) {
+    async getRankSettings(req, res) {
         const page = req.query.page || 1
         const data = await RankSettingService.getRankSettings(page);
+
+        res.success(data);
+    }
+    async getRankSetting(req, res) {
+        const { id } = req.params;
+        const data = await RankSettingService.getRankSetting(id);
+
+        res.success(data);
+    }
+    async updateRankSetting(req, res) {
+        const { id } = req.params;
+        const data = await RankSettingService.updateRankSetting(id, req.body);
+
+        res.success(data);
+    }
+    async deleteRankSetting(req, res) {
+        const { id } = req.params;
+        const data = await RankSettingService.deleteRankSetting(id);
 
         res.success(data);
     }

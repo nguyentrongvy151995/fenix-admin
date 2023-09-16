@@ -18,7 +18,7 @@ const RankSettingModel = new BaseModel({
             type: String,
             maxlength: 1000,
         },
-        Medals: {
+        medals: {
             type: Number,
         },
         RequiredCoins: {  

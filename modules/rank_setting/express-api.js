@@ -9,6 +9,18 @@ exports.load = app => {
     )
     app.get(
         '/api/v1/rank-setting',
+        RankSettingController.getRankSettings,
+    )
+    app.get(
+        '/api/v1/rank-setting/:id',
         RankSettingController.getRankSetting,
+    )
+    app.put(
+        '/api/v1/rank-setting/:id',
+        RankSettingController.updateRankSetting,
+    )
+    app.delete(
+        '/api/v1/rank-setting/:id',
+        RankSettingController.deleteRankSetting,
     )
 };
