@@ -1,41 +1,60 @@
-const rankTiersRepository = require("./repository");
+const RankTierRepository = require("./repository");
+const {  ERROR_MESSAGES } = require("../../constants/common");
 
-class RankTiersService {
-  async create({ coins, season, tierName, numberOfMedal }) {
-    return rankTiersRepository.create({
-      coins,
-      season,
-      tierName,
-      numberOfMedal,
-    });
+class RankSettingService {
+  async create(data) {
+    return RankTierRepository.create(data);
   }
 
-  async findTiersById(id) {
-    return rankTiersRepository.getOne(id);
-  }
-
-  async updateTiersById({ id, data }) {
-    return rankTiersRepository.updateOne({
-      where: { _id: id },
-      data,
-    });
-  }
-
-  async getListTiers(page) {
-    const [numberOfTiers, tiers] = await Promise.all([
-      rankTiersRepository.count(),
-      rankTiersRepository.getMany({
+  async getRankTiers(page) {
+    const [total, data] = await Promise.all([
+      RankTierRepository.count(),
+      RankTierRepository.getMany({
         page,
         limit: 10,
       }),
     ]);
 
-    return {tiers, numberOfTiers}
+    return {data, total}
   }
 
-  async deleteTiersById(id) {
-    return rankTiersRepository.deleteOne({ _id: id });
+  async getRankTier(id) {
+    try {
+      const data = await RankTierRepository.getOne({
+        where: {
+          _id: id
+        }
+      })
+      if (!data) {
+        throw new Error(ERROR_MESSAGES.DATA_NOT_EXIST);
+      }
+      return {data}
+    } catch (error) {
+      throw new Error(ERROR_MESSAGES.SYSTEM_ERROR)
+    }    
+  }
+
+  async updateRankTier(id, body) {
+    console.log('body', body)
+    try {
+      const data = await RankTierRepository.updatebyId(id, body)
+      if (!data) {
+        throw new Error(ERROR_MESSAGES.DATA_NOT_EXIST);
+      }
+      return {data}
+    } catch (error) {
+      throw new Error(ERROR_MESSAGES.SYSTEM_ERROR)
+    }    
+  }
+
+  async deleteRankTier(id) {
+    try {
+      const data = await RankTierRepository.deleteOne(id)
+      return {data}
+    } catch (error) {
+      throw new Error(ERROR_MESSAGES.SYSTEM_ERROR)
+    }    
   }
 }
 
-module.exports = new RankTiersService();
+module.exports = new RankSettingService();
