@@ -17,6 +17,7 @@ module.exports = {
         EMAIL_OR_PASSWORD_NOT_EXIST: 'EMAIL_OR_PASSWORD_NOT_EXIST',
         EMAIL_EXISTED: 'EMAIL_EXISTED',
         DATA_NOT_EXIST: 'DATA_NOT_EXIST',
+        SYSTEM_ERROR: 'SYSTEM_ERROR'
     },
     TIME_IN:  {
         MORNING: 'morning',

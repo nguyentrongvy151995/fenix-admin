@@ -1,9 +1,9 @@
-const BaseRepository = require('../../common/base-repository');
+const BaseRepository = require("../../common/base-repository");
 
 class RankTiersRepository extends BaseRepository {
-    constructor() {
-        super('RankTiers');
-    }
+  constructor() {
+    super("RankTiers");
+  }
 }
 
 module.exports = new RankTiersRepository();

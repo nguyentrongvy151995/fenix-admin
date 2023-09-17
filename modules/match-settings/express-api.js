@@ -1,10 +1,18 @@
 // @ts-check
 
-const rankSettingsController = require('./controller');
+const matchSettingController = require("./controller");
 
-exports.load = app => {
-    app.post(
-        '/api/v1/rank-settings',
-        rankSettingsController.create,
-    );
-}
+exports.load = (app) => {
+  app.post("/api/v1/match-settings", matchSettingController.create);
+
+  app.get("/api/v1/match-settings/:id", matchSettingController.findMatchById);
+
+  app.put("/api/v1/match-settings/:id", matchSettingController.updateMatchById);
+
+  app.get("/api/v1/match-settings", matchSettingController.getListMatch);
+
+  app.delete(
+    "/api/v1/match-settings/:id",
+    matchSettingController.deleteMatchById
+  );
+};
