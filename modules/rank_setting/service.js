@@ -20,7 +20,13 @@ class RankSettingService {
 
   async getRankSetting(id) {
     try {
-      const data = await RankSettingRepository.getById(id)
+      // const data = await RankSettingRepository.getById(id)
+
+      const data = await RankSettingRepository.getOne({
+        where: {
+          _id: id
+        }
+      })
       if (!data) {
         throw new Error(ERROR_MESSAGES.DATA_NOT_EXIST);
       }
