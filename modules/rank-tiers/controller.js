@@ -1,56 +1,38 @@
 const BaseController = require("../../common/base-controller");
-const rankTiersService = require("./service");
+const RankSettingService = require('./service');
 
-class RankTiersController extends BaseController {
-  async create(req, res) {
-    const { coins, season, tierName, numberOfMedal } = req.body;
+class RankTierController extends BaseController {
+    async create(req, res) {
+        await RankSettingService.create(req.body);
 
-    await rankTiersService.create({ coins, season, tierName, numberOfMedal });
+        res.success([]);
+    }
 
-    res.success([]);
-  }
+    async getRankTiers(req, res) {
+        const page = req.query.page || 1
+        const data = await RankSettingService.getRankTiers(page);
 
-  async findTiersById(req, res) {
-    const { id } = req.params;
+        res.success(data);
+    }
+    async getRankTier(req, res) {
+        const { id } = req.params;
+        const find =  await RankSettingService.getRankTier(id);
+        const data = await RankSettingService.getRankTier(id);
 
-    const rankTiers = await rankTiersService.findTiersById(id);
+        res.success(data);
+    }
+    async updateRankTier(req, res) {
+        const { id } = req.params;
+        const data = await RankSettingService.updateRankTier(id, req.body);
 
-    res.success(rankTiers);
-  }
+        res.success(data);
+    }
+    async deleteRankTier(req, res) {
+        const { id } = req.params;
+        const data = await RankSettingService.deleteRankTier(id);
 
-  async updateTiersById(req, res) {
-    const {
-      body: { coins, season, tierName, numberOfMedal },
-      params: { id },
-    } = req;
-
-    await rankTiersService.updateTiersById({
-      id,
-      data: {
-        coins,
-        season,
-        tierName,
-        numberOfMedal,
-      },
-    });
-
-    res.success([]);
-  }
-
-  async getListTiers(req, res) {
-    const page = req.query.page || 1;
-    const result = await rankTiersService.getListTiers(page);
-
-    res.success(result);
-  }
-
-  async deleteTiersById(req, res) {
-    const id = req.params.id;
-
-    await rankTiersService.deleteTiersById(id);
-
-    res.success([]);
-  }
+        res.success(data);
+    }
 }
 
-module.exports = new RankTiersController();
+module.exports = new RankTierController();
