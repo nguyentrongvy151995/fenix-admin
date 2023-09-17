@@ -1,5 +1,4 @@
 // @ts-check
-
 const matchSettingController = require("./controller");
 
 exports.load = (app) => {
