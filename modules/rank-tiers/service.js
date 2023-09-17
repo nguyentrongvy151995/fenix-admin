@@ -35,9 +35,11 @@ class RankSettingService {
   }
 
   async updateRankTier(id, body) {
-    console.log('body', body)
     try {
-      const data = await RankTierRepository.updatebyId(id, body)
+      const data = await RankTierRepository.getOneAndUpdate({
+        where: { _id: id },
+        data: body,
+      })
       if (!data) {
         throw new Error(ERROR_MESSAGES.DATA_NOT_EXIST);
       }
