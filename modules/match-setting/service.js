@@ -3,11 +3,11 @@ const matchSettingRepository = require("./repository");
 class MatchSettingService {
   async create({
     tierId,
-    rounds,
+    round,
   }) {
     return matchSettingRepository.create({
       tierId,
-      rounds,
+      rounds: round,
     });
   }
 
@@ -32,6 +32,7 @@ class MatchSettingService {
       matchSettingRepository.getMany({
         page: page || 1,
         limit: limit || 10,
+        populate: ({ path: 'tierId', select: 'tierName' })
       }),
     ]);
 
