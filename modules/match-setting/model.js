@@ -12,6 +12,7 @@ const rankSettingsModel = new BaseModel({
     tierId: {
       type: mongoose.SchemaTypes.ObjectId,
       required: true,
+      ref: 'RankTiers', 
     },
     rounds: [
       {

@@ -5,10 +5,7 @@ class MatchSettingController extends BaseController {
   async create(req, res) {
     const { tierId,  rounds} = req.body;
 
-    await matchSettingService.create({
-      tierId,
-      rounds,
-    });
+    await matchSettingService.create(req.body);
 
     res.success([]);
   }
