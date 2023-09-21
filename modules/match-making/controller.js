@@ -3,19 +3,53 @@ const matchMakingServiceService = require("./service");
 
 class MatchMakingController extends BaseController {
   async create(req, res) {
-    await matchMakingServiceService.create();
+    const { tierWeight, medalWeight, winLossWeight, pointRange, timeToUpRange } = req.body;
+
+    await matchMakingServiceService.create({
+      tierWeight,
+      medalWeight,
+      winLossWeight,
+      pointRange,
+      timeToUpRange,
+    });
+
+    res.success([]);
   }
 
   async findMatchMakingById(req, res) {
-    await matchMakingServiceService.findMatchMakingById();
+    const { id } = req.params;
+
+    const matchMaking = await matchMakingServiceService.findMatchMakingById(id);
+
+    res.success(matchMaking);
   }
 
   async updateMatchMakingById(req, res) {
-    await matchMakingServiceService.updateMatchMakingById();
+    const {
+      body: { tierWeight, medalWeight, winLossWeight, pointRange, timeToUpRange },
+      params: { id },
+    } = req;
+
+    await matchMakingServiceService.updateMatchMakingById({
+      id,
+      data: {
+        tierWeight,
+        medalWeight,
+        winLossWeight,
+        pointRange,
+        timeToUpRange,
+      },
+    });
+
+    res.success([]);
   }
 
   async getListMatchMaking(req, res) {
-    await matchMakingServiceService.getListMatchMaking();
+    const { page, limit } = req.query;
+
+    const result = await matchMakingServiceService.getListMatchMaking({ page, limit });
+
+    res.success(result);
   }
 
   async deleteMatchMakingById(req, res) {
