@@ -20,7 +20,8 @@ class MatchSettingService {
   }
 
   async updateMatchById({ id, data }) {
-    return matchSettingRepository.updateOne({
+    console.log({ id, data })
+    return matchSettingRepository.getOneAndUpdate({
       where: { _id: id },
       data,
     });
