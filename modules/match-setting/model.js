@@ -47,7 +47,6 @@ const rankSettingsModel = new BaseModel({
         },
         preparationTimeBeforeMatch: {
           type: Number,
-          required: true,
           min: 1,
           max: 50,
         },

@@ -1,5 +1,6 @@
 const RankTierRepository = require("./repository");
 const {  ERROR_MESSAGES } = require("../../constants/common");
+const { specialRegex } = require("../../helpers/regex.helper");
 const VError = require('../../common/error');
 
 class RankSettingService {
@@ -28,16 +29,23 @@ class RankSettingService {
     });
   }
 
-  async getRankTiers({ page, limit }) {
+  async getRankTiers({ page, limit, search }) {
+    const condition = {};
+
+    if (search) {
+      condition.season = specialRegex(search);
+    }
+
     const [total, data] = await Promise.all([
       RankTierRepository.count(),
       RankTierRepository.getMany({
         page: page || 1,
         limit: limit || 10,
+        where: condition,
       }),
     ]);
 
-    return {data, total}
+    return { data, total };
   }
 
   async getRankTier(id) {

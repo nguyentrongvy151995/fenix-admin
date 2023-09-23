@@ -16,8 +16,8 @@ class RankTierController extends BaseController {
     }
 
     async getRankTiers(req, res) {
-        const { page, limit } = req.query;
-        const data = await RankSettingService.getRankTiers({ page, limit });
+        const { page, limit, search } = req.query;
+        const data = await RankSettingService.getRankTiers({ page, limit, search });
 
         res.success(data);
     }
