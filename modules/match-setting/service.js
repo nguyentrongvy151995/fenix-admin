@@ -33,7 +33,7 @@ class MatchSettingService {
       matchSettingRepository.getMany({
         page: page || 1,
         limit: limit || 10,
-        populate: ({ path: 'tierId', select: 'tierName' })
+        populate: ({ path: 'tierId', select: 'tierName season' })
       }),
     ]);
 
