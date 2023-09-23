@@ -53,7 +53,9 @@ class MatchMakingController extends BaseController {
   }
 
   async deleteMatchMakingById(req, res) {
-    await matchMakingServiceService.deleteMatchMakingById();
+    const result = await matchMakingServiceService.deleteMatchMakingById(req.params.id);
+
+    res.success(result);
   }
 }
 
