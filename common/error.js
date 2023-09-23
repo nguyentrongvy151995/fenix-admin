@@ -1,7 +1,6 @@
 // @ts-check
 
 const { StatusCodes } = require('http-status-codes');
-
 const { ERROR } = require('../constants/error');
 
 class VError extends Error {

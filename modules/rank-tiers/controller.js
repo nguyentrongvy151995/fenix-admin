@@ -3,14 +3,21 @@ const RankSettingService = require('./service');
 
 class RankTierController extends BaseController {
     async create(req, res) {
-        await RankSettingService.create(req.body);
+        const { season, tierName, numberOfMedal, coins } = req.body;
 
-        res.success([]);
+        const result = await RankSettingService.create({
+            coins,
+            season,
+            tierName,
+            numberOfMedal,
+        });
+
+        res.success(result);
     }
 
     async getRankTiers(req, res) {
-        const page = req.query.page || 1
-        const data = await RankSettingService.getRankTiers(page);
+        const { page, limit } = req.query;
+        const data = await RankSettingService.getRankTiers({ page, limit });
 
         res.success(data);
     }
