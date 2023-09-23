@@ -3,7 +3,8 @@ const { verifyToken } = require('../helpers/auth.helper');
 
 exports.authenticate = async (req, res, next) => {
     // TODO: authenticate here
-    const token = req.headers.access_token;
+    const token = req.headers.authorization || req.headers.accessToken;
+    console.log('token', req.headers.authorization)
 
     if (!token) return next(new Error('INVALID_TOKEN'));
 

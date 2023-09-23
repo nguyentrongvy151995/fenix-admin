@@ -46,7 +46,7 @@ class AuthService {
       throw new Error(ERROR_MESSAGES.EMAIL_OR_PASSWORD_NOT_EXIST);
     }
 
-    user.access_token = await generateToken(user);
+    user.accessToken = await generateToken(user);
     delete user['userName']
     user.user = {userName};
 

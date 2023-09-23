@@ -24,6 +24,8 @@ class MatchSettingController extends BaseController {
       params: { id },
     } = req;
 
+    console.log(req.body, req.params)
+
     await matchSettingService.updateMatchById({
       id,
       data: {
