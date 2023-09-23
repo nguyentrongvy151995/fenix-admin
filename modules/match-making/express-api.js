@@ -2,16 +2,16 @@
 const matchMakingController = require("./controller");
 
 exports.load = (app) => {
-  app.post("/api/v1/match-making", matchMakingController.create);
+  app.post("/api/v1/match-makings", matchMakingController.create);
 
-  app.get("/api/v1/match-making/:id", matchMakingController.findMatchMakingById);
+  app.get("/api/v1/match-makings/:id", matchMakingController.findMatchMakingById);
 
-  app.put("/api/v1/match-making/:id", matchMakingController.updateMatchMakingById);
+  app.put("/api/v1/match-makings/:id", matchMakingController.updateMatchMakingById);
 
-  app.get("/api/v1/match-making", matchMakingController.getListMatchMaking);
+  app.get("/api/v1/match-makings", matchMakingController.getListMatchMaking);
 
   app.delete(
-    "/api/v1/match-making/:id",
+    "/api/v1/match-makings/:id",
     matchMakingController.deleteMatchMakingById
   );
 };

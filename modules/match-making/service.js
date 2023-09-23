@@ -33,7 +33,7 @@ class MatchMakingService {
     });
   }
 
-  async getListMatchMaking() {
+  async getListMatchMaking({page, limit}) {
     const [numberOfMatchMaking, matchKing] = await Promise.all([
       matchMakingRepository.count(),
       matchMakingRepository.getMany({
