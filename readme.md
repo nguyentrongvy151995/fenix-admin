@@ -20,7 +20,7 @@ git clone https://github.com/nguyentrongvy151995/fenix-admin.git
 cd fenix-admin
 npm install
 
-## Run source
+## Run source Backend
 npm run start
 
 
