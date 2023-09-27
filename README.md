@@ -28,7 +28,7 @@ npm run start
 
 ```bash
 git clone https://github.com/nguyentrongvy151995/fenix-admin-client.git
-
+```
 ## Install Dependencies Backend
 
 cd fenix-admin-client
