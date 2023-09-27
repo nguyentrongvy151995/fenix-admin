@@ -8,10 +8,12 @@ To run the Node.js Express and React application on your local machine, you need
 
 ## Clone the Repository BackEnd
 
+
 Open your terminal or command prompt and use the following command to clone the source code from the Git repository to your local machine:
 
 ```bash
 git clone https://github.com/nguyentrongvy151995/fenix-admin.git
+```
 
 ## Install Dependencies Backend
 
