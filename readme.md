@@ -39,4 +39,4 @@ npm install
 npm run dev
 
 ## Login Account
-admin1 / 12345
+admin / 12345
