@@ -14,11 +14,11 @@ module.exports = {
     },
     DEFAULT_TIMEOUT: 15000,
     ERROR_MESSAGES: {
-        EMAIL_OR_PASSWORD_NOT_EXIST: 'EMAIL_OR_PASSWORD_NOT_EXIST',
-        EMAIL_EXISTED: 'EMAIL_EXISTED',
-        DATA_NOT_EXIST: 'DATA_NOT_EXIST',
+        EMAIL_OR_PASSWORD_NOT_EXIST: 'Email or password not exists',
+        EMAIL_EXISTED: 'Email Exists',
+        DATA_NOT_EXIST: 'Data Not Exists',
         SYSTEM_ERROR: 'SYSTEM_ERROR',
-        SEASON_EXISTED: 'SEASON_EXISTED',
+        SEASON_TIER_EXISTED: 'Season and TierName existed',
     },
     TIME_IN:  {
         MORNING: 'morning',

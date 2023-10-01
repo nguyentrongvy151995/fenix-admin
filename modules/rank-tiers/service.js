@@ -13,12 +13,13 @@ class RankSettingService {
 
     const data = await RankTierRepository.getOne({
       where: {
-        season: season,
+        season,
+        tierName
       },
     });
 
     if (data) {
-      throw new VError({ message: ERROR_MESSAGES.SEASON_EXISTED });
+      throw new VError({ message: ERROR_MESSAGES.SEASON_TIER_EXISTED });
     }
 
     return RankTierRepository.create({
@@ -65,18 +66,22 @@ class RankSettingService {
   }
 
   async updateRankTier(id, body) {
-    try {
-      const data = await RankTierRepository.getOneAndUpdate({
-        where: { _id: id },
-        data: body,
-      })
-      if (!data) {
-        throw new Error(ERROR_MESSAGES.DATA_NOT_EXIST);
-      }
-      return {data}
-    } catch (error) {
-      throw new Error(ERROR_MESSAGES.SYSTEM_ERROR)
-    }    
+    const {season, tierName} = body
+    const rsFind = await RankTierRepository.getOne({
+      where: {
+        season: season,
+        tierName: tierName
+      },
+    });
+    
+    if (rsFind) {
+      throw new VError({ message: ERROR_MESSAGES.SEASON_TIER_EXISTED });
+    }
+
+    return RankTierRepository.getOneAndUpdate({
+      where: { _id: id },
+      data: body,
+    })
   }
 
   async deleteRankTier(id) {
